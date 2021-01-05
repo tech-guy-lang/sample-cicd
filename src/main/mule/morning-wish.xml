@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="2f759a66-d054-4e5c-886b-f834307e5f65" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="morning-wishFlow" doc:id="7ed571a9-6808-49cf-8abe-e6ba33e09496" >
+		<http:listener doc:name="Listener" doc:id="7d80435e-24b3-4a5e-bc12-c78552bbabc4" config-ref="HTTP_Listener_config" path="/morning"/>
+		<logger level="INFO" doc:name="Logger" doc:id="7d2b2b0e-3bee-426b-83bb-91ad73dc6615" message="A Tuesday Morning"/>
+		<set-payload value='"Good Morning"' doc:name="Set Payload" doc:id="c2cf7425-572b-4e17-8bd0-896d7b3af24b" />
+	</flow>
+</mule>
